@@ -2,7 +2,7 @@ import { FormEvent, useEffect, useState } from 'react';
 import { Card, FormField, Loader } from '../components';
 
 export type Post = {
-	id: string;
+	_id: string;
 	name: string;
 	prompt: string;
 	photo: string;
@@ -18,7 +18,7 @@ function RenderCards({ data, title }: RenderCardsProps) {
 		return (
 			<>
 				{data.map((post: Post) => (
-					<Card key={post.id} {...post} />
+					<Card key={post._id} {...post} />
 				))}
 			</>
 		);

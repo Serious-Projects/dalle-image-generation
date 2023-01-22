@@ -1,7 +1,7 @@
-import { PrismaClient } from '@prisma/client';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
 import express from 'express';
+import connect from './database/connect.js';
 import dalleRoutes from './routes/dalleRoutes.js';
 import postRoutes from './routes/postRoutes.js';
 
@@ -10,7 +10,6 @@ dotenv.config();
 
 // Express server instance
 const app = express();
-export const prisma = new PrismaClient();
 
 // Middlewares
 app.use(express.json({ limit: '50mb' }));
@@ -26,15 +25,8 @@ app.get('/', async (req, res) => {
 	res.send('Hello from DALL-E 2.0');
 });
 
-async function run() {
-	try {
-		await prisma.$connect();
-		app.listen(8080, () => console.log('Server is up and running at http://localhost:8080'));
-	} catch (err) {
-		console.error(err);
-		await prisma.$disconnect();
-		process.exit(1);
-	}
-}
-
-run();
+// Connect to the mongodb server and start the server
+connect(() => {
+	const PORT = process.env.PORT || 8080;
+	app.listen(PORT, () => console.log(`Server up and running at http://localhost:${PORT}`));
+});

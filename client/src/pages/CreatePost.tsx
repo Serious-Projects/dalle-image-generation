@@ -31,7 +31,6 @@ function CreatePost() {
 				if (data.name !== 'Error') {
 					const photoBlob = `data:image/jpeg;base64,${data.photo}`;
 					setForm((prev) => ({ ...prev, photo: photoBlob }));
-					console.log({ form, data });
 				} else {
 					console.log(data);
 				}
