@@ -1,0 +1,16 @@
+# Editor files
+/.vscode
+
+# Node packages
+node_modules
+
+# Environment files
+.env
+.env.production
+
+# Prisma
+prisma/migrations
+prisma/dev.db
+
+# Package files
+package-lock.json
