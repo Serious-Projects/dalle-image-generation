@@ -2,7 +2,7 @@ import { download } from '../assets';
 import type { Post } from '../pages/Home';
 import { downloadImage } from '../utils';
 
-function Card({ id, name, prompt, photo }: Post) {
+function Card({ _id, name, prompt, photo }: Post) {
 	return (
 		<div className="relative rounded-xl group shadow-card hover:shadow-cardhover">
 			<img src={photo} alt={prompt} className="object-cover w-full h-auto rounded-xl" />
@@ -19,7 +19,7 @@ function Card({ id, name, prompt, photo }: Post) {
 
 					<button
 						type="button"
-						onClick={() => downloadImage(id, photo)}
+						onClick={() => downloadImage(_id, photo)}
 						className="bg-transparent border-none outline-none"
 					>
 						<img src={download} alt="download" className="object-contain w-6 h-6 invert" />
